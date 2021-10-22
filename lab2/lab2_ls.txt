@@ -1,0 +1,12 @@
+.:
+итого 8
+drw-rwxr-x. 2 alep alep  22 окт 22 23:08 dir
+-rw-rw--w-. 1 root alep   5 окт 22 23:06 file
+-rw-------. 1 alep alep   0 окт 22 23:12 file1
+-rw-rw-rw-. 1 alep alep   0 окт 22 23:12 file2
+-rw-rw-rw-. 1 alep alep 847 окт 22 23:17 lab2_history.txt
+-rw-rw-rw-. 1 alep alep   0 окт 22 23:19 lab2_ls.txt
+
+./dir:
+итого 4
+-rw-rw-r--. 1 alep alep 7 окт 22 23:09 new_file
