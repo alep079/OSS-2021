@@ -1,0 +1,17 @@
+    1  uname -r
+    3  sudo yum install rpmdevtools
+    4  rpmdev-setuptree
+    5  yumdownloader --source kernel
+    7  rpm -i kernel-4.18.0-305.10.2.el7.src.rpm
+    8  ls rpmbuild/SPECS/
+    9  ls rpmbuild/SOURCES/
+   10  rpmbuild -bs ~/rpmbuild/SPECS/kernel.spec
+   11  ls ~/rpmbuild/SRPMS/
+   12  yum-builddep /home/alep/rpmbuild/SRPMS/kernel-4.18.0-305.10.2.el7.src.rpm
+
+#Устанавливаем все необходимые пакеты
+
+   30  sudo yum-builddep /home/alep/rpmbuild/SRPMS/kernel-4.18.0-305.10.2.el7.src.rpm
+   31  rpmbuild -bp --target=$(uname -m) rpmbuild/SPECS/kernel.spec
+   32  cd rpmbuild/BUILD/kernel*/linux*
+   33  history > history.txt
