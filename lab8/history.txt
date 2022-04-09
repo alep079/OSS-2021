@@ -1,0 +1,18 @@
+    1  ldd /bin/login | grep pam
+    2  ls -l /lib64/libpam*
+    3  ls -l /lib64/security/
+    4  vi /etc/pam.d/system-auth
+    5  vi /etc/pam.d/su
+    7  sudo su
+    8  su -c "hostname mephi"
+   10  man pam_pwquality
+   11  passwd
+   13  man pam_limits
+   14  vim check_user.c
+   15  gcc check_user.c -o check_user -lpam -lpam_misc
+   17  sudo yum install pam-devel
+   18  gcc check_user.c -o check_user -lpam -lpam_misc
+   20  ./check_user
+   29  vim check_user.c
+   30  gcc check_user.c -o check_user -lpam -lpam_misc
+   31  ./check_user
