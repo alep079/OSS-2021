@@ -1,0 +1,60 @@
+    1  ldd /bin/ls | grep selinux
+    2  ls -l /etc/selinux/
+    3  ls -l /etc/selinux/targeted/
+    4  id -Z
+    5  ls -Z /etc/passwd /etc/group /etc/shadow
+    6  ls -Z /etc/login.defs /etc/sudoers
+    7  ls -Z /usr/bin/passwd 
+    8  ls -Z /usr/sbin/useradd
+    9  getfattr -n security.selinux /etc/passwd
+   10  ps Zaux
+   11  ls /proc/$$/attr
+   12  ps Z $(pgrep passwd)
+   13  netstat -tnlpZ
+   14  sestatus 
+   15  getenforce
+   16  cat /sys/fs/selinux/enforce
+   21  getsebool -a | grep httpd
+   22  seinfo
+   28  sudo dnf install setools-console
+   29  seinfo
+   30  seinfo -cfile -x
+   31  seinfo -dir -x
+   32  seinfo -cdir -x
+   33  seinfo -cblk_file -x
+   34  seinfo -cchr_file -x
+   36  seinfo -clnk_file -x
+   37  seinfo -cfifo_file -x
+   38  seinfo -csock_file -x
+   39  seinfo -cfilesystem -x
+   40  grep 'httpd_.*_t' /etc/selinux/targeted/contexts/files/file_contexts
+   41  semanage fcontext -l
+   42  sudo semanage fcontext -l
+   43  man semanage
+   44  mkdir selinux
+   45  cd selinux
+   46  touch selinux.txt
+   47  ls -Z
+   48  cd ..
+   49  ls -Z
+   57  cp /home/alep/selinux/selinux.txt /home/alep
+   58  ls -Z
+   59  cd ..
+   60  ls -Z
+   67  man chcon
+   74  cd selinux
+   75  chcon -t httpd_sys_content_t selinux.txt
+   76  ls -Z
+   78  semanage fcontext -l
+   79  sudo semanage fcontext -l
+   80  sesearch -T -s httpd_t -t var_log_t
+   81  sesearch -T -s httpd_t -t tmp_t
+   82  sesearch --allow --source passwd_t --target shadow_t --class file
+   83  sesearch -A -s passwd_t -t passwd_exec_t -c file
+   84  sesearch -A -s unconfined_t -t passwd_exec_t -c file
+   85  sesearch -A -s unconfined_t -t passwd_t -c process
+   86  sesearch --type_trans -s unconfined_t -t passwd_exec_t
+   88  ausearch -m avc -ts recent
+   89  sudo ausearch -m avc -ts recent
+   90  seinfo | grep -E '(dontaudit|allow)'
+   92  history > history.txt
